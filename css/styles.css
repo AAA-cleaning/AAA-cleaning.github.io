@@ -21,7 +21,7 @@ header {
     display: flex;
     justify-content: space-between;  /* Space between "AAA" and nav menu */
     align-items: center;
-    padding: 0 20px;
+    padding: 10px 20px; /* Added padding for better spacing */
 }
 
 /* Logo (AAA) styling */
@@ -66,7 +66,8 @@ footer {
     bottom: 0;
     width: 100%;
 }
-/* Hamburger menu icon (only for mobile) */
+
+/* 🛠 Fix Hamburger menu icon (only for mobile) */
 .menu-icon {
     font-size: 30px;
     cursor: pointer;
@@ -75,11 +76,13 @@ footer {
 
 /* 🛠 Responsive adjustments for mobile devices */
 @media screen and (max-width: 768px) {
-    body{
-        background-color: #f4f4f4!important;
+    body {
+        background-color: #f4f4f4 !important;
     }
+
+    /* Show hamburger menu only on mobile */
     .menu-icon {
-        display: block; /* Show hamburger menu only on mobile */
+        display: block;
     }
 
     /* Hide nav menu by default on mobile */
@@ -91,11 +94,13 @@ footer {
         background: #333;
         border-radius: 5px;
         width: 150px;
+        flex-direction: column; /* Stack items */
+        align-items: center;
     }
 
-    /* Show menu when clicked */
+    /* Fix for when menu is toggled */
     nav.show {
-        display: block;
+        display: flex; /* Use flex for proper alignment */
     }
 
     /* Stack nav links in dropdown */
@@ -114,5 +119,11 @@ footer {
 
     nav ul li:last-child {
         border-bottom: none;
+    }
+
+    /* 🛠 Prevent footer from overlapping content */
+    footer {
+        position: relative;
+        margin-top: 20px;
     }
 }
