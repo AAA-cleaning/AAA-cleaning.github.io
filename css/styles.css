@@ -103,6 +103,48 @@ footer {
     cursor: pointer;
     display: none; /* Hide on desktop */
 }
+/* Center the entire gallery */
+.gallery-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Space between arrows and gallery */
+    max-width: 80%;
+    margin: auto;
+    position: relative;
+}
+
+/* Gallery wrapper */
+.gallery {
+    display: flex;
+    overflow: hidden; /* Hide overflowing images */
+    width: 350px; /* Same as your image width */
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Gallery images */
+.gallery img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Navigation buttons */
+.prev-btn, .next-btn {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
 
 /* 🛠 Responsive adjustments for mobile devices */
 @media screen and (max-width: 768px) {
@@ -182,5 +224,14 @@ footer {
         background-color: #f4f4f4; /* Optional: Adds a subtle background */
         padding: 15px;
         border-radius: 10px;
+    }
+    .gallery-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .prev-btn, .next-btn {
+        font-size: 20px;
+        padding: 8px 12px;
     }
 }

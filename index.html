@@ -28,10 +28,15 @@
     </header>
     <section>
         <h1>AAA Cleaning Services</h1>
-        <div class="contact-container">
-            <div>
-                <img src="marble_images/photo1.png" alt="Contact Image" style="width: 350px; height: auto;">
-            <div>
+        <div class="gallery-container">
+            <button class="prev-btn" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
+            <div class="gallery">
+                <img src="marble_images/photo1.png" class="gallery-image" alt="Gallery Image">
+                <img src="marble_images/photo2.png" class="gallery-image" alt="Gallery Image">
+                <img src="marble_images/photo3.png" class="gallery-image" alt="Gallery Image">
+                <img src="marble_images/photo4.png" class="gallery-image" alt="Gallery Image">
+            </div>
+            <button class="next-btn" onclick="nextImage()">&#10095;</button> <!-- Right arrow -->
         </div>
     </section>
     <section>  
@@ -43,5 +48,6 @@
         <p>Call (619) 279-3199 for a free quote!</p>
     </footer>
     <script src="js/scripts.js"></script>
+    <script src="js/gallery.js"></script>
 </body>
 </html>
