@@ -66,32 +66,50 @@ footer {
     bottom: 0;
     width: 100%;
 }
+/* Hamburger menu icon (only for mobile) */
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+    display: none; /* Hide on desktop */
+}
 
 /* 🛠 Responsive adjustments for mobile devices */
 @media screen and (max-width: 768px) {
-    body{
-        background-color: #f4f4f4;
-    }
-    /* Keep navbar horizontal */
-    .navbar {
-        flex-direction: row;  /* Prevent stacking */
-        justify-content: space-between; /* Keep spacing */
+    .menu-icon {
+        display: block; /* Show hamburger menu only on mobile */
     }
 
-    /* Keep navigation items in a row */
+    /* Hide nav menu by default on mobile */
+    nav {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: #333;
+        border-radius: 5px;
+        width: 150px;
+    }
+
+    /* Show menu when clicked */
+    nav.show {
+        display: block;
+    }
+
+    /* Stack nav links in dropdown */
     nav ul {
-        flex-direction: row; /* Keep items in a horizontal row */
+        flex-direction: column;
+        text-align: left;
+        padding: 0;
+        margin: 0;
     }
 
-    /* Reduce font size for mobile */
-    nav ul li a {
-        font-size: 14px; /* Adjust as needed */
-        padding: 5px; /* Reduce padding */
+    nav ul li {
+        display: block;
+        padding: 10px;
+        border-bottom: 1px solid #444;
     }
 
-    /* Adjust logo size */
-    .logo {
-        font-size: 20px; /* Smaller logo text */
-        padding: 0 10px;
+    nav ul li:last-child {
+        border-bottom: none;
     }
 }
