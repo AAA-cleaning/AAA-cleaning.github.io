@@ -3,7 +3,8 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    background-color: #f4f4f4;
+    background-color: white;
+    font-size: 20px;
 }
 
 header {
@@ -77,7 +78,7 @@ footer {
 /* 🛠 Responsive adjustments for mobile devices */
 @media screen and (max-width: 768px) {
     body {
-        background-color: #f4f4f4 !important;
+        background-color: white !important;
     }
 
     /* Show hamburger menu only on mobile */
