@@ -11,7 +11,7 @@
 <body>
     <header>
         <div class="navbar">
-            <h1 class="logo">AAA</h1> <!-- Logo on the left -->
+            <h1 class="logo">AAA Cleaning Services</h1> <!-- Logo on the left -->
     
             <!-- Hamburger menu (only for mobile) -->
             <div class="menu-icon" onclick="toggleMenu()">☰</div>
@@ -28,6 +28,15 @@
         </div>
     </header>
     <section>
+        <div class="gallery-container">
+            <img id="gallery-image" src="marble_images/photo1.png" alt="Gallery Image">
+            <div class="gallery-buttons">
+                <button class="prev-btn" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
+                <button class="next-btn" onclick="nextImage()">&#10095;</button> <!-- Right arrow -->
+            </div>
+        </div>
+    </section>
+    <section>
         <h1>Marble Polishing</h1>
         <p>We work with ceramics, marble, and any other stone that you need polished/restored. </p>
     </section>
@@ -36,5 +45,6 @@
         <p>Call (619) 279-3199 for a free quote!</p>
     </footer>
     <script src="js/scripts.js"></script>
+    <script src="js/gallery.js"></script>
 </body>
 </html>

@@ -103,6 +103,21 @@ footer {
     cursor: pointer;
     display: none; /* Hide on desktop */
 }
+nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: #333;
+    border-radius: 5px;
+    width: 200px;
+    z-index: 101; /* Higher than the gallery */
+}
+
+/* When the menu is active, make sure it's on top */
+nav.show {
+    display: block;
+}
 /* Center the entire gallery */
 .gallery-container {
     display: flex;
@@ -116,6 +131,7 @@ footer {
     background-color: #f4f4f4; /* Match contact section background */
     padding: 15px;
     border-radius: 10px;
+    z-index: 1;
 }
 
 /* Main gallery image */
