@@ -1,11 +1,17 @@
-// Get all images and track index
-const images = document.querySelectorAll(".gallery-image");
-let currentIndex = 0;
+// Image list for the gallery
+const images = [
+    "marble_images/photo1.png",
+    "marble_images/photo2.png",
+    "marble_images/photo3.png",
+    "marble_images/photo4.png"
+];
 
-// Function to show the current image
+let currentIndex = 0;
+const galleryImage = document.getElementById("gallery-image");
+
+// Function to change images manually
 function showImage(index) {
-    const gallery = document.querySelector(".gallery");
-    gallery.style.transform = `translateX(-${index * 350}px)`;
+    galleryImage.src = images[index];
 }
 
 // Next image function
