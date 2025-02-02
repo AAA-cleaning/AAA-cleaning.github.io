@@ -75,6 +75,9 @@ footer {
 
 /* 🛠 Responsive adjustments for mobile devices */
 @media screen and (max-width: 768px) {
+    body{
+        background-color: #f4f4f4!important;
+    }
     .menu-icon {
         display: block; /* Show hamburger menu only on mobile */
     }
