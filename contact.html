@@ -12,12 +12,17 @@
 <body>
     <header>
         <div class="navbar">
-            <h1 class="logo">AAA</h1>
-            <nav>
+            <h1 class="logo">AAA</h1> <!-- Logo on the left -->
+    
+            <!-- Hamburger menu (only for mobile) -->
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    
+            <!-- Desktop & Mobile Navigation -->
+            <nav id="nav-menu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="marble.html">Marble Polishing</a></li>
+                    <li><a href="carpet.html">Carpet Cleaning</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -26,11 +31,24 @@
 
     <section>
         <h1>Contact</h1>
-        <p>Get in touch with me!</p>
+        <div style="display: flex; gap: 20px;">
+            <div>
+                <img src="images/mama.jpg" alt="Contact Image" style="width: 150px; height: auto;">
+            <p>Lupita Rendon</p>
+            <p>Phone: (619) 279-3199</p>
+            <p>Email: lupitarendon08@yahoo.com.mx</p>
+            </div>
+            <div>
+                <img src="images/Victor.jpg" alt="Contact Image" style="width: 150px; height: auto;">
+            <p>Victor Huerta</p>
+            <p>Whats App: +52 686 569 3613</p>
+            </div>
+        </div>
     </section>
 
     <footer>
         <p> Call (619) 279-3199 for a free quote!</p>
     </footer>
+    <script src="js/scripts.js"></script>
 </body>
 </html>
