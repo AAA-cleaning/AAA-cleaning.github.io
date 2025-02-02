@@ -64,6 +64,9 @@ footer {
 
 /* 🛠 Responsive adjustments for mobile devices */
 @media screen and (max-width: 768px) {
+    body{
+        background-color: #f4f4f4;
+    }
     /* Keep navbar horizontal */
     .navbar {
         flex-direction: row;  /* Prevent stacking */
