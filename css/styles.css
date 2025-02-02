@@ -64,52 +64,26 @@ footer {
 
 /* 🛠 Responsive adjustments for mobile devices */
 @media screen and (max-width: 768px) {
-    body {
-        text-align: center;
-        overflow-x: hidden; /* Prevent horizontal scrolling */
-    }
-
-    /* 🛠 Fix navbar layout */
+    /* Keep navbar horizontal */
     .navbar {
-        flex-direction: column; /* Stack items vertically */
-        align-items: center;
-        text-align: center;
+        flex-direction: row;  /* Prevent stacking */
+        justify-content: space-between; /* Keep spacing */
     }
 
-    /* 🛠 Adjust navigation menu */
+    /* Keep navigation items in a row */
     nav ul {
-        flex-direction: column; /* Stack menu items */
-        padding: 0;
-        display: flex;
-        align-items: center; /* Center menu items */
+        flex-direction: row; /* Keep items in a horizontal row */
     }
 
-    nav ul li {
-        margin: 10px 0; /* Add space between menu items */
+    /* Reduce font size for mobile */
+    nav ul li a {
+        font-size: 14px; /* Adjust as needed */
+        padding: 5px; /* Reduce padding */
     }
 
-    /* 🛠 Ensure hero image scales properly */
-    .hero-image img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    /* 🛠 Reduce padding for better spacing */
-    header {
-        padding: 15px;
-    }
-
-    footer {
-        padding: 10px;
-        position: relative; /* Prevent overlap issues */
-    }
-
-    /* 🛠 Fix text size for readability */
-    h1, h2 {
-        font-size: 22px;
-    }
-
-    p {
-        font-size: 16px;
+    /* Adjust logo size */
+    .logo {
+        font-size: 20px; /* Smaller logo text */
+        padding: 0 10px;
     }
 }
