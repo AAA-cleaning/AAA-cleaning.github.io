@@ -160,4 +160,27 @@ footer {
         width: 100%;
         margin-top: 150px; /* Adjust for nav menu height */
     }
+    section {
+        display: flex;
+        flex-direction: column; /* Stack elements by default */
+        align-items: center; /* Center horizontally */
+        justify-content: center; /* Center vertically */
+        text-align: center;
+        padding: 20px;
+    }
+    
+    /* Style the contact container */
+    .contact-container {
+        display: flex;
+        gap: 30px; /* Space between items */
+        justify-content: center; /* Center horizontally */
+        align-items: center;
+    }
+    
+    /* Style individual contact blocks */
+    .contact-container div {
+        background-color: #f4f4f4; /* Optional: Adds a subtle background */
+        padding: 15px;
+        border-radius: 10px;
+    }
 }
