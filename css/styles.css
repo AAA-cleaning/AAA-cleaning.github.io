@@ -62,9 +62,9 @@ footer {
     background: #333;
     color: white;
     padding: 0.5em;
-    position: fixed;
-    bottom: 0;
+    position: relative; /* Change to relative so it stays at the bottom */
     width: 100%;
+    margin-top: 20px;
 }
 
 /* 🛠 Fix Hamburger menu icon (only for mobile) */
@@ -100,7 +100,7 @@ footer {
 
     /* Fix for when menu is toggled */
     nav.show {
-        display: flex; /* Use flex for proper alignment */
+        display: block !important; /* Use flex for proper alignment */
     }
 
     /* Stack nav links in dropdown */
