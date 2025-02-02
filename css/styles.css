@@ -1,0 +1,58 @@
+body {
+    font-family: 'Poppins';
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+header {
+    font-family: 'Poppins';
+    background: #333;
+    color: white;
+    padding: 1em 0;
+}
+/* Navbar container */
+.navbar {
+    display: flex;         /* Use flexbox for alignment */
+    justify-content: space-between;  /* Space between "AAA" and nav menu */
+    align-items: center;   /* Center vertically */
+}
+
+/* Logo (AAA) styling */
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+    padding: 0 45px;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;    
+}
+
+section {
+    padding: 0px;
+}
+
+footer {
+    background: #333;
+    color: white;
+    padding: 0.5em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
