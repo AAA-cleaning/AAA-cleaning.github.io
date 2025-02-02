@@ -1,5 +1,5 @@
 body {
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
@@ -12,11 +12,13 @@ header {
     color: white;
     padding: 1em 0;
 }
+
 /* Navbar container */
 .navbar {
-    display: flex;         /* Use flexbox for alignment */
+    display: flex;
     justify-content: space-between;  /* Space between "AAA" and nav menu */
-    align-items: center;   /* Center vertically */
+    align-items: center;
+    padding: 0 20px;
 }
 
 /* Logo (AAA) styling */
@@ -25,8 +27,9 @@ header {
     font-weight: bold;
     color: white;
     margin: 0;
-    padding: 0 45px;
+    padding: 0 20px;
 }
+
 nav ul {
     list-style: none;
     padding: 0;
@@ -41,13 +44,15 @@ nav ul li {
 nav ul li a {
     color: white;
     text-decoration: none;
-    padding: 10px;    
+    padding: 10px;
 }
 
+/* Section padding */
 section {
-    padding: 0px;
+    padding: 20px;
 }
 
+/* Footer styling */
 footer {
     background: #333;
     color: white;
@@ -55,4 +60,56 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+/* 🛠 Responsive adjustments for mobile devices */
+@media screen and (max-width: 768px) {
+    body {
+        text-align: center;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
+    /* 🛠 Fix navbar layout */
+    .navbar {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center;
+        text-align: center;
+    }
+
+    /* 🛠 Adjust navigation menu */
+    nav ul {
+        flex-direction: column; /* Stack menu items */
+        padding: 0;
+        display: flex;
+        align-items: center; /* Center menu items */
+    }
+
+    nav ul li {
+        margin: 10px 0; /* Add space between menu items */
+    }
+
+    /* 🛠 Ensure hero image scales properly */
+    .hero-image img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* 🛠 Reduce padding for better spacing */
+    header {
+        padding: 15px;
+    }
+
+    footer {
+        padding: 10px;
+        position: relative; /* Prevent overlap issues */
+    }
+
+    /* 🛠 Fix text size for readability */
+    h1, h2 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 16px;
+    }
 }
