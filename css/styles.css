@@ -106,6 +106,10 @@ footer {
     .menu-icon {
         display: block;
     }
+    .contact-container{
+        flex-direction: column;
+        gap:15px;
+    }
 
     nav {
         display: none; /* Hide by default on mobile */
