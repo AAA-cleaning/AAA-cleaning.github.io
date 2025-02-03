@@ -1,3 +1,4 @@
+/* 🛠 Base Styles */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -17,15 +18,15 @@ header {
     overflow: hidden;
 }
 
-/* Navbar container */
+/* 🛠 Navbar Styles */
 .navbar {
     display: flex;
-    justify-content: space-between;  /* Space between "AAA" and nav menu */
+    justify-content: space-between;  /* Space between logo and nav menu */
     align-items: center;
-    padding: 10px 20px; /* Added padding for better spacing */
+    padding: 10px 20px;
 }
 
-/* Logo (AAA) styling */
+/* Logo */
 .logo {
     font-size: 30px;
     font-weight: bold;
@@ -34,16 +35,22 @@ header {
     padding: 0 20px;
 }
 
+/* ✅ Ensure Desktop Nav is Always Visible */
+nav {
+    display: block;
+    position: static;
+}
+
 nav ul {
+    display: flex;
+    justify-content: center;
     list-style: none;
     padding: 0;
-    display: flex;
-    justify-content: center; /* Ensures even spacing */
-    align-items: center;
+    margin: 0;
 }
 
 nav ul li {
-    display: inline;
+    display: inline-block;
     margin: 0 20px;
 }
 
@@ -53,151 +60,71 @@ nav ul li a {
     padding: 10px;
 }
 
-/* Section padding */
-/* Center the entire contact section */
+/* 🛠 Section Padding & Contact Styling */
 section {
     display: flex;
-    flex-direction: column; /* Stack elements by default */
-    align-items: center; /* Center horizontally */
-    justify-content: center; /* Center vertically */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     padding: 20px;
 }
 
-/* Style the contact container */
+/* Contact Container */
 .contact-container {
     display: flex;
-    gap: 30px; /* Space between items */
-    justify-content: center; /* Center horizontally */
+    gap: 30px;
+    justify-content: center;
     align-items: center;
 }
 
-/* Style individual contact blocks */
+/* Contact Blocks */
 .contact-container div {
-    background-color: #f4f4f4; /* Optional: Adds a subtle background */
+    background-color: #f4f4f4;
     padding: 15px;
     border-radius: 10px;
 }
 
-/* Responsive: Stack items on mobile */
-@media screen and (max-width: 768px) {
-    .contact-container {
-        flex-direction: column; /* Stack contacts vertically */
-        gap: 15px;
-    }
-}
-
-/* Footer styling */
+/* 🛠 Footer */
 footer {
     background: #333;
     color: white;
     padding: 0.5em;
-    position: fixed;
-    bottom: 0;
+    position: relative; /* ✅ Fix: No more overlap */
     width: 100%;
 }
 
-/* 🛠 Fix Hamburger menu icon (only for mobile) */
+/* ✅ Fix Hamburger Menu Only for Mobile */
 .menu-icon {
     font-size: 30px;
     cursor: pointer;
     display: none; /* Hide on desktop */
 }
-nav {
-    display: none;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background: #333;
-    border-radius: 5px;
-    width: 200px;
-    z-index: 101; /* Higher than the gallery */
-}
 
-/* When the menu is active, make sure it's on top */
-nav.show {
-    display: block;
-}
-/* Center the entire gallery */
-.gallery-container {
-    display: flex;
-    flex-direction: column; /* Stack image and buttons vertically */
-    align-items: center;
-    justify-content: center;
-    gap: 10px; /* Space between image and buttons */
-    max-width: 100%;
-    margin: auto;
-    position: relative;
-    background-color: #f4f4f4; /* Match contact section background */
-    padding: 15px;
-    border-radius: 10px;
-    z-index: 1;
-}
-
-/* Main gallery image */
-#gallery-image {
-    width: 375px !important; /* Ensures image is always 350px */
-    height: auto;
-    border-radius: 10px;
-    object-fit: contain; /* Keeps aspect ratio */
-    background-color: white; /* Optional: Ensures a clean image border */
-}
-
-/* Gallery button container */
-.gallery-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 45px; /* Space between buttons */
-    width: 100%;
-}
-
-/* Navigation buttons */
-.prev-btn, .next-btn {
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 25px;
-    border-radius: 20%;
-    transition: 0.3s;
-}
-
-/* Change button hover color */
-.prev-btn:hover, .next-btn:hover {
-    background: rgba(0, 0, 0, 0.8);
-}
-
-/* 🛠 Responsive adjustments for mobile devices */
+/* Hide nav menu by default on mobile */
 @media screen and (max-width: 768px) {
-    body {
-        background-color: white !important;
-    }
-
-    /* Show hamburger menu only on mobile */
     .menu-icon {
         display: block;
     }
 
-    /* Hide nav menu by default on mobile */
     nav {
-        display: none;
+        display: none; /* Hide by default on mobile */
         position: absolute;
         top: 60px;
         right: 20px;
         background: #333;
         border-radius: 5px;
-        width: 150px;
-        flex-direction: column; /* Stack items */
+        width: 200px;
+        z-index: 101;
+        flex-direction: column;
         align-items: center;
     }
 
-    /* Fix for when menu is toggled */
+    /* Show menu when active */
     nav.show {
-        display: block !important; /* Use flex for proper alignment */
+        display: block !important;
     }
 
-    /* Stack nav links in dropdown */
     nav ul {
         flex-direction: column;
         text-align: left;
@@ -214,50 +141,53 @@ nav.show {
     nav ul li:last-child {
         border-bottom: none;
     }
+}
 
-    /* 🛠 Prevent footer from overlapping content */
-    footer {
-        background: #333;
-        color: white;
-        padding: 0.5em;
-        position: relative; /* Change to relative so it stays at the bottom */
-        width: 100%;
-        margin-top: 150px; /* Adjust for nav menu height */
-    }
-    section {
-        display: flex;
-        flex-direction: column; /* Stack elements by default */
-        align-items: center; /* Center horizontally */
-        justify-content: center; /* Center vertically */
-        text-align: center;
-        padding: 20px;
-    }
-    
-    /* Style the contact container */
-    .contact-container {
-        display: flex;
-        gap: 30px; /* Space between items */
-        justify-content: center; /* Center horizontally */
-        align-items: center;
-    }
-    
-    /* Style individual contact blocks */
-    .contact-container div {
-        background-color: #f4f4f4; /* Optional: Adds a subtle background */
-        padding: 15px;
-        border-radius: 10px;
-    }
-    .gallery-container {
-        flex-direction: column;
-        gap: 10px;
-    }
+/* 🛠 Gallery Styling */
+.gallery-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    max-width: 100%;
+    margin: auto;
+    position: relative;
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 10px;
+    z-index: 1;
+}
 
-    .gallery-buttons {
-        gap: 10px;
-    }
+/* Gallery Image */
+#gallery-image {
+    width: 375px !important;
+    height: auto;
+    border-radius: 10px;
+    object-fit: contain;
+    background-color: white;
+}
 
-    .prev-btn, .next-btn {
-        font-size: 20px;
-        padding: 8px 12px;
-    }
+/* Gallery Buttons */
+.gallery-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 45px;
+    width: 100%;
+}
+
+/* Navigation Buttons */
+.prev-btn, .next-btn {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 25px;
+    border-radius: 20%;
+    transition: 0.3s;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
 }
