@@ -85,13 +85,17 @@ section {
     border-radius: 10px;
 }
 
+main{
+    flex: 1;
+}
 /* 🛠 Footer */
 footer {
     background: #333;
     color: white;
     padding: 0.5em;
-    position: relative; /* ✅ Fix: No more overlap */
+    text-align: center;
     width: 100%;
+    margin-top: auto;
 }
 
 /* ✅ Fix Hamburger Menu Only for Mobile */
