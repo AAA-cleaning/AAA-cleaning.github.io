@@ -201,6 +201,6 @@ footer {
 }
 @media screen and (min-width: 1024px) {
     #gallery-image {
-        width: 500px !important; /* Bigger size for desktop */
+        width: 600px !important; /* Bigger size for desktop */
     }
 }
