@@ -1,51 +1,1289 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <div class="navbar">
-            <h1 class="logo">AAA Cleaning Services</h1> <!-- Logo on the left -->
-    
-            <!-- Hamburger menu (only for mobile) -->
-            <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    
-            <!-- Desktop & Mobile Navigation -->
-            <nav id="nav-menu">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="marble.html">Marble Polishing</a></li>
-                    <li><a href="carpet.html">Carpet Cleaning</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium Carpet Cleaning Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#0284c7", secondary: "#0ea5e9" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      html {
+      scroll-behavior: smooth;
+      }
+      body {
+      font-family: 'Poppins', sans-serif;
+      }
+      .before-after-slider {
+      position: relative;
+      overflow: hidden;
+      }
+      .before-after-slider .before-image,
+      .before-after-slider .after-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      }
+      .before-after-slider .after-image {
+      clip-path: polygon(0 0, 25% 0, 25% 100%, 0 100%);
+      }
+      .before-after-slider .slider-handle {
+      position: absolute;
+      top: 0;
+      left: 25%;
+      width: 4px;
+      height: 100%;
+      background-color: white;
+      transform: translateX(-50%);
+      cursor: ew-resize;
+      z-index: 10;
+      }
+      .before-after-slider .slider-handle::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      background-color: white;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      }
+      .before-after-slider .slider-handle::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      background-color: #0284c7;
+      border-radius: 50%;
+      }
+      .section-fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+      .section-fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+      }
+      .service-card {
+      transform: translateX(-50px);
+      opacity: 0;
+      transition: transform 0.8s ease, opacity 0.8s ease;
+      }
+      .service-card.visible {
+      transform: translateX(0);
+      opacity: 1;
+      }
+      .service-card:nth-child(even) {
+      transform: translateX(50px);
+      }
+      .counter-value {
+      display: inline-block;
+      }
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+      }
+      .custom-checkbox {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #cbd5e1;
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+      position: relative;
+      }
+      .custom-checkbox:checked {
+      background-color: #0284c7;
+      border-color: #0284c7;
+      }
+      .custom-checkbox:checked::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      width: 5px;
+      height: 10px;
+      border-bottom: 2px solid white;
+      border-right: 2px solid white;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-800 overflow-x-hidden">
+    <!-- Header -->
+    <header
+      class="fixed w-full bg-transparent transition-all duration-300 z-50"
+      id="header"
+    >
+      <div
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <a href="#" class="text-2xl font-['Pacifico'] text-white"
+          >AAA Cleaning Services</a
+        >
+        <nav class="hidden md:flex space-x-8">
+          <a
+            href="#home"
+            class="text-white hover:text-primary transition-colors"
+            >Home</a
+          >
+          <a
+            href="#services"
+            class="text-white hover:text-primary transition-colors"
+            >Services</a
+          >
+          <a
+            href="#gallery"
+            class="text-white hover:text-primary transition-colors"
+            >Gallery</a
+          >
+          <a
+            href="#about"
+            class="text-white hover:text-primary transition-colors"
+            >About</a
+          >
+          <a
+            href="#contact"
+            class="text-white hover:text-primary transition-colors"
+            >Contact</a
+          >
+        </nav>
+        <a
+          href="tel:6192793199"
+          class="hidden md:flex items-center gap-2 bg-white text-primary hover:bg-gray-100 px-6 py-3 !rounded-button font-medium transition-all whitespace-nowrap text-lg"
+        >
+          <i class="ri-phone-line"></i>
+          (619) 279-3199
+        </a>
+        <button
+          id="mobile-menu-button"
+          class="md:hidden text-white w-10 h-10 flex items-center justify-center"
+        >
+          <i class="ri-menu-line ri-2x"></i>
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="md:hidden absolute w-full left-0 top-full transform translate-y-0 opacity-0 transition-all duration-300 shadow-lg invisible"
+        style="background-image: url('bck.jpg'); background-size: cover; background-position: center;"
+      >
+        <div class="absolute inset-0 bg-black/75"></div>
+        <div class="container mx-auto px-4 py-4 flex flex-col space-y-4 relative z-10">
+          <a
+            href="#home"
+            class="text-white hover:text-primary py-2 font-medium transition-colors"
+            >Home</a
+          >
+          <a
+            href="#services"
+            class="text-white hover:text-primary py-2 font-medium transition-colors"
+            >Services</a
+          >
+          <a
+            href="#gallery"
+            class="text-white hover:text-primary py-2 font-medium transition-colors"
+            >Gallery</a
+          >
+          <a
+            href="#about"
+            class="text-white hover:text-primary py-2 font-medium transition-colors"
+            >About</a
+          >
+          <a
+            href="#contact"
+            class="text-white hover:text-primary py-2 font-medium transition-colors"
+            >Contact</a
+          >
+          <a
+            href="tel:6192793199"
+            class="bg-primary text-white hover:bg-primary/90 px-6 py-3 !rounded-button font-medium transition-all whitespace-nowrap text-center mt-4"
+          >
+            <i class="ri-phone-line"></i>
+            (619) 279-3199
+          </a>
         </div>
+      </div>
     </header>
-    <section>
-        <div class="gallery-container">
-            <img id="gallery-image" src="marble_images/photo1.png" alt="Gallery Image">
-            <div class="gallery-buttons">
-                <button class="prev-btn" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
-                <button class="next-btn" onclick="nextImage()">&#10095;</button> <!-- Right arrow -->
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="relative min-h-screen flex items-center"
+      style="background-image: url('bck.jpg'); background-size: cover; background-position: center;"
+    >
+      <div class="absolute inset-0 bg-black/45"></div>
+      <div class="container mx-auto px-4 py-20 relative z-10 w-full">
+        <div class="max-w-2xl">
+          <h1
+            class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+          >
+            Professional Cleaning Services for Your Home & Business
+          </h1>
+          <p class="text-xl text-white/90 mb-8">
+            We deliver exceptional results for all your cleaning needs. Explore our work and projects spanning over 20 years in San Diego and Southern California!
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button
+              id="contact-us-btn"
+              class="bg-primary hover:bg-primary/90 text-white px-8 py-4 !rounded-button font-medium transition-all whitespace-nowrap"
+            >
+              Contact Us
+            </button>
+            <button
+              id="view-services-btn"
+              class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-8 py-4 !rounded-button font-medium transition-all whitespace-nowrap"
+            >
+              View Services
+            </button>
+          </div>
+          <div class="mt-12 flex items-center gap-8">
+            <div class="flex items-center gap-2">
+              <div
+                class="w-10 h-10 flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-full"
+              >
+                <i class="ri-check-line ri-lg text-white"></i>
+              </div>
+              <span class="text-white">100% Satisfaction</span>
             </div>
+            <div class="flex items-center gap-2">
+              <div
+                class="w-10 h-10 flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-full"
+              >
+                <i class="ri-time-line ri-lg text-white"></i>
+              </div>
+              <span class="text-white">Fast Service</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div
+                class="w-10 h-10 flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-full"
+              >
+                <i class="ri-price-tag-3-line ri-lg text-white"></i>
+              </div>
+              <span class="text-white">Competitive Prices</span>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-    <section>  
-        <p>Our services include <a href="marble.html">Marble Polishing</a>, <a href="carpet.html">Carpet Cleaning</a>, Fog Sanitizing, Tile and Grout Cleaning, and more.</p>  
-        <p></p>
-        <p>Explore our work and projects spanning over 20 years in San Diego and Southern California!</p>  
-    </section>  
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16 section-fade-in">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Our Cleaning Services
+          </h2>
+        </div>
+        <div class="space-y-8">
+          <!-- Row 1: Marble Polishing and Carpet Cleaning -->
+          <div class="flex flex-col md:flex-row justify-center items-stretch gap-8 max-w-4xl mx-auto">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden service-card w-full max-w-sm">
+              <div class="h-48 overflow-hidden">
+                <img
+                  src="images/after/after_1.png"
+                  alt="Marble Polishing"
+                  class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-3">Marble Polishing</h3>
+                <p class="text-gray-600 mb-4">
+                  Restore the natural beauty and shine of your marble surfaces with our professional polishing services. We remove scratches, stains, and dullness to bring back the original luster.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="bg-blue-50 text-primary px-3 py-1 rounded-full text-sm"
+                    >Restoration</span
+                  >
+                  <span
+                    class="bg-blue-50 text-primary px-3 py-1 rounded-full text-sm"
+                    >Polishing</span
+                  >
+                </div>
+                <button
+                  class="text-primary hover:text-primary/80 font-medium flex items-center gap-1 transition-colors whitespace-nowrap"
+                >
+                  Learn more
+                </button>
+              </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden service-card w-full max-w-sm">
+              <div class="h-48 overflow-hidden">
+                <img
+                  src="images/after/after_6.png"
+                  alt="Carpet Cleaning"
+                  class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-3">Carpet Cleaning</h3>
+                <p class="text-gray-600 mb-4">
+                  Deep cleaning services that remove dirt, stains, and allergens from your carpets. Our advanced techniques ensure thorough cleaning while preserving carpet fibers.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="bg-blue-50 text-primary px-3 py-1 rounded-full text-sm"
+                    >Deep Clean</span
+                  >
+                  <span
+                    class="bg-blue-50 text-primary px-3 py-1 rounded-full text-sm"
+                    >Stain Removal</span
+                  >
+                </div>
+                <button
+                  class="text-primary hover:text-primary/80 font-medium flex items-center gap-1 transition-colors whitespace-nowrap"
+                >
+                  Learn more
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Row 2: Fog Sanitizing and Tile and Grout Cleaning -->
+          <div class="flex flex-col md:flex-row justify-center items-stretch gap-8 max-w-4xl mx-auto">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden service-card w-full max-w-sm">
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-3">Fog Sanitizing</h3>
+                <p class="text-gray-600 mb-4">
+                  Advanced fog sanitizing technology that eliminates bacteria, viruses, and pathogens from your indoor spaces. Ideal for maintaining a healthy environment.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="bg-blue-50 text-primary px-3 py-1 rounded-full text-sm"
+                    >Disinfection</span
+                  >
+                  <span
+                    class="bg-blue-50 text-primary px-3 py-1 rounded-full text-sm"
+                    >Health Safety</span
+                  >
+                </div>
+                <button
+                  class="text-primary hover:text-primary/80 font-medium flex items-center gap-1 transition-colors whitespace-nowrap"
+                >
+                  Learn more
+                </button>
+              </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden service-card w-full max-w-sm">
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-3">Tile and Grout Cleaning</h3>
+                <p class="text-gray-600 mb-4">
+                  Restore the original beauty of your tile surfaces and grout lines. We remove built-up dirt, grime, and stains to make your tiles look like new again.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="bg-blue-50 text-primary px-3 py-1 rounded-full text-sm"
+                    >Tile Cleaning</span
+                  >
+                  <span
+                    class="bg-blue-50 text-primary px-3 py-1 rounded-full text-sm"
+                    >Grout Restoration</span
+                  >
+                </div>
+                <button
+                  class="text-primary hover:text-primary/80 font-medium flex items-center gap-1 transition-colors whitespace-nowrap"
+                >
+                  Learn more
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Before/After Gallery Section -->
+    <section id="gallery" class="py-20 bg-gray-50 section-fade-in">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Before & After Gallery
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            See the dramatic difference our professional carpet cleaning
+            services can make. Drag the blue slider to the right to reveal the transformation.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="before-after-slider aspect-square rounded-lg overflow-hidden shadow-lg"
+          >
+            <img
+              src="images/before/before_1.png"
+              alt="Before Cleaning"
+              class="before-image"
+            />
+            <img
+              src="images/after/after_1.png"
+              alt="After Cleaning"
+              class="after-image"
+            />
+            <div class="slider-handle"></div>
+          </div>
+          <div
+            class="before-after-slider aspect-square rounded-lg overflow-hidden shadow-lg"
+          >
+            <img
+              src="images/before/before_2.png"
+              alt="Before Cleaning"
+              class="before-image"
+            />
+            <img
+              src="images/after/after_2.png"
+              alt="After Cleaning"
+              class="after-image"
+            />
+            <div class="slider-handle"></div>
+          </div>
+          <div
+            class="before-after-slider aspect-square rounded-lg overflow-hidden shadow-lg"
+          >
+            <img
+              src="images/before/before_3.png"
+              alt="Before Cleaning"
+              class="before-image"
+            />
+            <img
+              src="images/after/after_3.png"
+              alt="After Cleaning"
+              class="after-image"
+            />
+            <div class="slider-handle"></div>
+          </div>
+          <div
+            class="before-after-slider aspect-square rounded-lg overflow-hidden shadow-lg"
+          >
+            <img
+              src="images/before/before_4.png"
+              alt="Before Cleaning"
+              class="before-image"
+            />
+            <img
+              src="images/after/after_4.png"
+              alt="After Cleaning"
+              class="after-image"
+            />
+            <div class="slider-handle"></div>
+          </div>
+          <div
+            class="before-after-slider aspect-square rounded-lg overflow-hidden shadow-lg"
+          >
+            <img
+              src="images/before/before_5.png"
+              alt="Before Cleaning"
+              class="before-image"
+            />
+            <img
+              src="images/after/after_5.png"
+              alt="After Cleaning"
+              class="after-image"
+            />
+            <div class="slider-handle"></div>
+          </div>
+          <div
+            class="before-after-slider aspect-square rounded-lg overflow-hidden shadow-lg"
+          >
+            <img
+              src="images/before/before_6.png"
+              alt="Before Cleaning"
+              class="before-image"
+            />
+            <img
+              src="images/after/after_6.png"
+              alt="After Cleaning"
+              class="after-image"
+            />
+            <div class="slider-handle"></div>
+          </div>
+        </div>
 
-
-    <footer>
-        <p>Call (619) 279-3199 for a free quote!</p>
+      </div>
+    </section>
+    <!-- Why Choose Us Section -->
+    <section id="about" class="py-20 bg-white section-fade-in">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Choose Us</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            We're committed to delivering exceptional carpet cleaning services
+            with a focus on quality, reliability, and customer satisfaction.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 justify-items-center max-w-6xl mx-auto">
+          <div class="bg-gray-50 p-8 rounded-lg text-center w-full max-w-sm">
+            <div
+              class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-award-line text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Experience</h3>
+            <p class="text-gray-600 mb-4">
+              With over 20 years of experience, we've mastered the art of carpet cleaning.
+            </p>
+            <div class="text-3xl font-bold text-primary">
+              <span class="counter-value" data-target="20">0</span>+
+            </div>
+            <p class="text-sm text-gray-500">Years in Business</p>
+          </div>
+          <div class="bg-gray-50 p-8 rounded-lg text-center w-full max-w-sm">
+            <div
+              class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-user-smile-line text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Happy Clients</h3>
+            <p class="text-gray-600 mb-4">
+              We've helped thousands of homeowners and businesses maintain
+              clean, healthy carpets.
+            </p>
+            <div class="text-3xl font-bold text-primary">
+              <span class="counter-value" data-target="5000">0</span>+
+            </div>
+            <p class="text-sm text-gray-500">Satisfied Customers</p>
+          </div>
+          <div class="bg-gray-50 p-8 rounded-lg text-center w-full max-w-sm md:col-span-2 lg:col-span-1">
+            <div
+              class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-home-line text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Projects</h3>
+            <p class="text-gray-600 mb-4">
+              We've successfully completed thousands of residential and
+              commercial projects.
+            </p>
+            <div class="text-3xl font-bold text-primary">
+              <span class="counter-value" data-target="10000">0</span>+
+            </div>
+            <p class="text-sm text-gray-500">Completed Jobs</p>
+          </div>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-8 md:p-12">
+          <h3 class="text-2xl font-semibold mb-8 text-center">
+            What Our Customers Say
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+            <div class="bg-white p-6 rounded-lg shadow-sm max-w-sm mx-auto">
+              <div class="flex text-yellow-400 mb-4">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+              </div>
+              <p class="text-gray-600 mb-4">
+                "I was amazed at how they were able to remove stains that had
+                been there for years. My carpets look brand new again. Highly
+                recommend their services!"
+              </p>
+              <div class="flex items-center">
+                <div
+                  class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3"
+                >
+                  <span class="text-primary font-semibold">JD</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Jennifer Davidson</h4>
+                  <p class="text-sm text-gray-500">Homeowner</p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm max-w-sm mx-auto">
+              <div class="flex text-yellow-400 mb-4">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+              </div>
+              <p class="text-gray-600 mb-4">
+                "As a business owner, I need my office carpets to look
+                professional. Their commercial cleaning service is efficient,
+                thorough, and fits perfectly into our schedule."
+              </p>
+              <div class="flex items-center">
+                <div
+                  class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3"
+                >
+                  <span class="text-primary font-semibold">RB</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Robert Blackwell</h4>
+                  <p class="text-sm text-gray-500">Business Owner</p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm max-w-sm mx-auto">
+              <div class="flex text-yellow-400 mb-4">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+              </div>
+              <p class="text-gray-600 mb-4">
+                "With two kids and a dog, our carpets take a beating. Their pet
+                odor and stain removal service is nothing short of miraculous.
+                Worth every penny!"
+              </p>
+              <div class="flex items-center">
+                <div
+                  class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3"
+                >
+                  <span class="text-primary font-semibold">SM</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Sarah Mitchell</h4>
+                  <p class="text-sm text-gray-500">Parent</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary section-fade-in">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+          Ready for a Cleaner Space?
+        </h2>
+        <p class="text-white/90 max-w-2xl mx-auto mb-8">
+          Get in touch with AAA's expert cleaning team today and experience the
+          difference professional cleaning can make.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a
+            href="tel:6192793199"
+            class="bg-white text-primary hover:bg-gray-100 px-8 py-4 !rounded-button font-medium transition-all whitespace-nowrap text-center inline-flex items-center justify-center gap-2"
+          >
+            <i class="ri-phone-line"></i>
+            Contact Us and Get a Free Estimate!
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white section-fade-in">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Contact Us</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Have questions or ready to schedule your carpet cleaning? Get in
+            touch with our team today.
+          </p>
+        </div>
+        <div class="space-y-12">
+          <!-- Row 1: Contact Cards -->
+          <div class="flex flex-col md:flex-row justify-center items-center gap-8 max-w-4xl mx-auto">
+            <div class="w-full max-w-sm">
+              <div class="bg-gray-50 p-8 rounded-lg">
+                <div class="text-center">
+                  <div class="w-40 h-40 mx-auto mb-6 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
+                    <img src="images/Mama.png" alt="Lupita Rendon" class="w-full h-full object-cover">
+                  </div>
+                  <h3 class="text-xl font-semibold mb-4">Lupita Rendon</h3>
+                  <div class="space-y-3">
+                    <div class="flex items-center justify-center gap-2">
+                      <i class="ri-phone-line text-primary"></i>
+                      <a href="tel:6192793199" class="text-gray-600 hover:text-primary transition-colors">
+                        (619) 279-3199
+                      </a>
+                    </div>
+                    <div class="flex items-center justify-center gap-2">
+                      <i class="ri-mail-line text-primary"></i>
+                      <a href="mailto:lupitarendon08@yahoo.com.mx" class="text-gray-600 hover:text-primary transition-colors">
+                        lupitarendon08@yahoo.com.mx
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full max-w-sm">
+              <div class="bg-gray-50 p-8 rounded-lg">
+                <div class="text-center">
+                  <div class="w-40 h-40 mx-auto mb-6 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
+                    <img src="images/Victor.png" alt="Victor Huerta" class="w-full h-full object-cover">
+                  </div>
+                  <h3 class="text-xl font-semibold mb-4">Victor Huerta</h3>
+                  <div class="space-y-3">
+                    <div class="flex items-center justify-center gap-2">
+                      <i class="ri-whatsapp-line text-primary"></i>
+                      <a href="https://wa.me/526865693613" class="text-gray-600 hover:text-primary transition-colors">
+                        +52 686 569 3613
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Row 2: Get a Free Quote -->
+          <div class="flex justify-center">
+            <div class="w-full max-w-md">
+              <div class="bg-gray-50 p-8 rounded-lg">
+                <div class="text-center">
+                  <h3 class="text-xl font-semibold mb-4">Get a Free Quote</h3>
+                  <p class="text-gray-600 mb-6">
+                    Please reach out if you would like to make an appointment for an estimate or if you have any questions!
+                  </p>
+                  <a 
+                    href="tel:6192793199"
+                    class="bg-primary text-white hover:bg-primary/90 px-8 py-3 rounded-button font-medium transition-all inline-flex items-center gap-2"
+                  >
+                    <i class="ri-phone-line"></i>
+                    Call for Free Quote
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div>
+            <a
+              href="#"
+              class="text-2xl font-['Pacifico'] text-white mb-4 inline-block"
+              >AAA Cleaning Services</a
+            >
+            <p class="text-gray-400 mb-6">
+              Professional cleaning services that deliver exceptional results.
+              We service in San Diego and across Southern California. 
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#home"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#gallery"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Gallery</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Our Services</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Marble Polishing</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Carpet Cleaning</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Fog Sanitizing</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Tile and Grout Cleaning</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+            <p class="text-gray-400 mb-4">
+              Get in touch with us for professional cleaning services.
+            </p>
+            <div class="space-y-3">
+              <div class="flex items-center space-x-3">
+                <i class="ri-phone-line text-primary"></i>
+                <a href="tel:6192793199" class="text-gray-400 hover:text-white transition-colors">
+                  (619) 279-3199
+                </a>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="ri-mail-line text-primary"></i>
+                <a href="mailto:lupitarendon08@yahoo.com.mx" class="text-gray-400 hover:text-white transition-colors">
+                  lupitarendon08@yahoo.com.mx
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 pt-8">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 mb-4 md:mb-0">
+              © 2025 AAA Carpet Cleaning. All rights reserved.
+            </p>
+            <div class="flex space-x-6">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+                >Privacy Policy</a
+              >
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+                >Terms of Service</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
-    <script src="js/scripts.js"></script>
-    <script src="js/gallery.js"></script>
-</body>
+    <!-- Back to Top Button -->
+    <button
+      id="back-to-top"
+      class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300"
+    >
+      <i class="ri-arrow-up-line ri-lg"></i>
+    </button>
+    <!-- Scripts -->
+    <script id="header-scroll-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        const header = document.getElementById("header");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const mobileMenuOverlay = mobileMenu.querySelector('.absolute.inset-0');
+        function updateHeader() {
+          if (window.scrollY > 50) {
+            header.classList.add("bg-white", "shadow-md");
+            header.classList.remove("bg-transparent");
+            // Update text color for navigation links
+            const navLinks = header.querySelectorAll("nav a");
+            navLinks.forEach((link) => {
+              link.classList.remove("text-white");
+              link.classList.add("text-gray-800");
+            });
+            // Update logo color
+            const logo = header.querySelector("a[class*='Pacifico']");
+            if (logo) {
+              logo.classList.remove("text-white");
+              logo.classList.add("text-primary");
+            }
+            // Update mobile menu button
+            const menuButton = header.querySelector("#mobile-menu-button");
+            if (menuButton) {
+              menuButton.classList.remove("text-white");
+              menuButton.classList.add("text-gray-800");
+            }
+            // Update mobile menu styling
+            if (mobileMenu && mobileMenuOverlay) {
+              mobileMenu.style.backgroundImage = 'none';
+              mobileMenu.classList.add("bg-white");
+              mobileMenuOverlay.style.display = 'none';
+              const mobileMenuLinks = mobileMenu.querySelectorAll("a:not([href^='tel'])");
+              mobileMenuLinks.forEach((link) => {
+                link.classList.remove("text-white");
+                link.classList.add("text-gray-800");
+              });
+            }
+          } else {
+            header.classList.remove("bg-white", "shadow-md");
+            header.classList.add("bg-transparent");
+            // Update text color for navigation links
+            const navLinks = header.querySelectorAll("nav a");
+            navLinks.forEach((link) => {
+              link.classList.remove("text-gray-800");
+              link.classList.add("text-white");
+            });
+            // Update logo color
+            const logo = header.querySelector("a[class*='Pacifico']");
+            if (logo) {
+              logo.classList.remove("text-primary");
+              logo.classList.add("text-white");
+            }
+            // Update mobile menu button
+            const menuButton = header.querySelector("#mobile-menu-button");
+            if (menuButton) {
+              menuButton.classList.remove("text-gray-800");
+              menuButton.classList.add("text-white");
+            }
+            // Update mobile menu styling
+            if (mobileMenu && mobileMenuOverlay) {
+              mobileMenu.classList.remove("bg-white");
+              mobileMenu.style.backgroundImage = "url('bck.jpg')";
+              mobileMenuOverlay.style.display = 'block';
+              const mobileMenuLinks = mobileMenu.querySelectorAll("a:not([href^='tel'])");
+              mobileMenuLinks.forEach((link) => {
+                link.classList.remove("text-gray-800");
+                link.classList.add("text-white");
+              });
+            }
+          }
+        }
+        window.addEventListener("scroll", updateHeader);
+        updateHeader(); // Initial call
+      });
+    </script>
+    <script id="mobile-menu-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        let isMenuOpen = false;
+        
+        mobileMenuButton.addEventListener("click", function (e) {
+          e.stopPropagation();
+          isMenuOpen = !isMenuOpen;
+          if (isMenuOpen) {
+            mobileMenu.classList.remove("opacity-0", "invisible");
+            mobileMenu.classList.add("opacity-100", "visible");
+            mobileMenuButton.innerHTML = '<i class="ri-close-line ri-2x"></i>';
+          } else {
+            mobileMenu.classList.remove("opacity-100", "visible");
+            mobileMenu.classList.add("opacity-0", "invisible");
+            mobileMenuButton.innerHTML = '<i class="ri-menu-line ri-2x"></i>';
+          }
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+        mobileMenuLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            isMenuOpen = false;
+            mobileMenu.classList.remove("opacity-100", "visible");
+            mobileMenu.classList.add("opacity-0", "invisible");
+            mobileMenuButton.innerHTML = '<i class="ri-menu-line ri-2x"></i>';
+          });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener("click", function (e) {
+          if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target) && isMenuOpen) {
+            isMenuOpen = false;
+            mobileMenu.classList.remove("opacity-100", "visible");
+            mobileMenu.classList.add("opacity-0", "invisible");
+            mobileMenuButton.innerHTML = '<i class="ri-menu-line ri-2x"></i>';
+          }
+        });
+      });
+    </script>
+    <script id="button-interactions-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        // View Services button functionality
+        const viewServicesBtn = document.getElementById("view-services-btn");
+        if (viewServicesBtn) {
+          viewServicesBtn.addEventListener("click", function () {
+            const servicesSection = document.getElementById("services");
+            if (servicesSection) {
+              const headerHeight = document.querySelector("header").offsetHeight;
+              const targetPosition = servicesSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+              window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth",
+              });
+            }
+          });
+        }
+        
+        // Contact Us button functionality
+        const contactUsBtn = document.getElementById("contact-us-btn");
+        if (contactUsBtn) {
+          contactUsBtn.addEventListener("click", function () {
+            const contactSection = document.getElementById("contact");
+            if (contactSection) {
+              const headerHeight = document.querySelector("header").offsetHeight;
+              const targetPosition = contactSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+              window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth",
+              });
+            }
+          });
+        }
+        
+        // All other Contact Us and Get a Quote buttons
+        const allContactBtns = document.querySelectorAll('button');
+        allContactBtns.forEach(btn => {
+          if (btn.textContent.includes("Contact Us") || btn.textContent.includes("Get a Quote")) {
+            if (btn.id !== "contact-us-btn") { // Skip the one we already handled
+              btn.addEventListener("click", function () {
+                const contactSection = document.getElementById("contact");
+                if (contactSection) {
+                  const headerHeight = document.querySelector("header").offsetHeight;
+                  const targetPosition = contactSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                  window.scrollTo({
+                    top: targetPosition,
+                    behavior: "smooth",
+                  });
+                }
+              });
+            }
+          }
+        });
+      });
+    </script>
+    <script id="before-after-slider-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        const sliders = document.querySelectorAll(".before-after-slider");
+        sliders.forEach((slider) => {
+          const handle = slider.querySelector(".slider-handle");
+          const afterImage = slider.querySelector(".after-image");
+          let isDragging = false;
+          // Function to update slider position
+          function updateSliderPosition(e) {
+            if (!isDragging) return;
+            const sliderRect = slider.getBoundingClientRect();
+            let x = e.clientX - sliderRect.left;
+            // Constrain x to the slider width
+            if (x < 0) x = 0;
+            if (x > sliderRect.width) x = sliderRect.width;
+            const percentage = (x / sliderRect.width) * 100;
+            // Update slider handle position
+            handle.style.left = `${percentage}%`;
+            // Update clip-path for after image
+            afterImage.style.clipPath = `polygon(0 0, ${percentage}% 0, ${percentage}% 100%, 0 100%)`;
+          }
+          // Mouse events
+          handle.addEventListener("mousedown", () => {
+            isDragging = true;
+          });
+          window.addEventListener("mousemove", updateSliderPosition);
+          window.addEventListener("mouseup", () => {
+            isDragging = false;
+          });
+          // Touch events for mobile
+          handle.addEventListener("touchstart", () => {
+            isDragging = true;
+          });
+          window.addEventListener("touchmove", (e) => {
+            if (!isDragging) return;
+            const touch = e.touches[0];
+            const sliderRect = slider.getBoundingClientRect();
+            let x = touch.clientX - sliderRect.left;
+            // Constrain x to the slider width
+            if (x < 0) x = 0;
+            if (x > sliderRect.width) x = sliderRect.width;
+            const percentage = (x / sliderRect.width) * 100;
+            // Update slider handle position
+            handle.style.left = `${percentage}%`;
+            // Update clip-path for after image
+            afterImage.style.clipPath = `polygon(0 0, ${percentage}% 0, ${percentage}% 100%, 0 100%)`;
+          });
+          window.addEventListener("touchend", () => {
+            isDragging = false;
+          });
+        });
+      });
+    </script>
+    <script id="scroll-animations-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        const sections = document.querySelectorAll(".section-fade-in");
+        const serviceCards = document.querySelectorAll(".service-card");
+        const observerOptions = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.1,
+        };
+        
+        // Observer for sections
+        const sectionObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            } else {
+              entry.target.classList.remove("visible");
+            }
+          });
+        }, observerOptions);
+        
+        sections.forEach((section) => {
+          sectionObserver.observe(section);
+        });
+        
+        // Observer for service cards
+        const cardObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Add delay based on card index
+              setTimeout(
+                () => {
+                  entry.target.classList.add("visible");
+                },
+                100 * Array.from(serviceCards).indexOf(entry.target),
+              );
+            } else {
+              entry.target.classList.remove("visible");
+            }
+          });
+        }, observerOptions);
+        
+        serviceCards.forEach((card) => {
+          cardObserver.observe(card);
+        });
+        
+        // Counter animation
+        let countersAnimated = new Set();
+        const counterObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            const counter = entry.target;
+            const counterId = counter.getAttribute("data-target");
+            
+            if (entry.isIntersecting && !countersAnimated.has(counterId)) {
+              countersAnimated.add(counterId);
+              const target = parseInt(counter.getAttribute("data-target"));
+              const duration = 2000; // 2 seconds
+              const step = target / (duration / 16); // 60fps
+              let current = 0;
+              
+              const updateCounter = () => {
+                current += step;
+                if (current < target) {
+                  counter.textContent = Math.ceil(current);
+                  requestAnimationFrame(updateCounter);
+                } else {
+                  counter.textContent = target;
+                }
+              };
+              updateCounter();
+            } else if (!entry.isIntersecting) {
+              countersAnimated.delete(counterId);
+              counter.textContent = "0";
+            }
+          });
+        }, observerOptions);
+        
+        const counters = document.querySelectorAll(".counter-value");
+        counters.forEach((counter) => {
+          counterObserver.observe(counter);
+        });
+      });
+    </script>
+    <script id="back-to-top-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        const backToTopButton = document.getElementById("back-to-top");
+        function toggleBackToTopButton() {
+          if (window.scrollY > 300) {
+            backToTopButton.classList.remove("opacity-0", "invisible");
+            backToTopButton.classList.add("opacity-100", "visible");
+          } else {
+            backToTopButton.classList.remove("opacity-100", "visible");
+            backToTopButton.classList.add("opacity-0", "invisible");
+          }
+        }
+        window.addEventListener("scroll", toggleBackToTopButton);
+        backToTopButton.addEventListener("click", function () {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+    <script id="smooth-scroll-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        const navLinks = document.querySelectorAll('header a[href^="#"]');
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              const headerHeight = document.querySelector("header").offsetHeight;
+              const targetPosition =
+                targetElement.getBoundingClientRect().top +
+                window.pageYOffset -
+                headerHeight;
+              window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
 </html>
