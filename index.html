@@ -1135,11 +1135,13 @@
             isDragging = false;
           });
           // Touch events for mobile
-          handle.addEventListener("touchstart", () => {
+          handle.addEventListener("touchstart", (e) => {
+            e.preventDefault(); // Prevent default touch behavior
             isDragging = true;
           });
           window.addEventListener("touchmove", (e) => {
             if (!isDragging) return;
+            e.preventDefault(); // Prevent page scrolling
             const touch = e.touches[0];
             const sliderRect = slider.getBoundingClientRect();
             let x = touch.clientX - sliderRect.left;
